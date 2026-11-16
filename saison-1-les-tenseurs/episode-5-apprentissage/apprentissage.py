@@ -32,12 +32,12 @@ reseau = nn.Sequential(nn.Flatten(), nn.Linear(64, 16), nn.ReLU(), nn.Linear(16,
 # 1. La perte : un nombre qui mesure l'erreur
 perte = nn.CrossEntropyLoss()
 l = perte(reseau(X_train), y_train)
-print(round(l.item(), 3))
+print("1. Perte avant entraînement (erreur moyenne sur les 1 437 images) :", round(l.item(), 3))
 
 # 2. Les gradients : un tenseur de même forme que chaque poids
 l.backward()
-print(reseau[1].weight.grad.shape)
-print(reseau[3].weight.grad.shape)
+print("2. Forme du gradient de la couche 1 (la même que ses poids) :", reseau[1].weight.grad.shape)
+print("   Forme du gradient de la couche 2 (la même que ses poids) :", reseau[3].weight.grad.shape)
 grad0 = reseau[1].weight.grad.clone()
 reseau.zero_grad()
 
@@ -58,10 +58,10 @@ for epoque in range(400):
         })
 
 with torch.no_grad():
-    print(round(perte(reseau(X_train), y_train).item(), 3))
-    print(reseau(x7).softmax(dim=1).argmax(dim=1))
-    print(round(reseau(x7).softmax(dim=1)[0, 7].item(), 3))
-    print(round((reseau(X_test).argmax(dim=1) == y_test).float().mean().item(), 3))
+    print("3. Perte après 400 passes d'entraînement :", round(perte(reseau(X_train), y_train).item(), 3))
+    print("   Réponse du réseau pour notre 7 (chiffre le plus probable) :", reseau(x7).softmax(dim=1).argmax(dim=1))
+    print("   Probabilité que ce soit un 7 :", round(reseau(x7).softmax(dim=1)[0, 7].item(), 3))
+    print("   Exactitude sur les 360 images jamais vues :", round((reseau(X_test).argmax(dim=1) == y_test).float().mean().item(), 3))
 
 # Données pour les animations
 json.dump({"journal": journal, "grad0": grad0.tolist()}, open(Path(__file__).with_name("journal_entrainement.json"), "w"))

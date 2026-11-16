@@ -16,26 +16,26 @@ image = torch.tensor([
 ], dtype=torch.uint8)
 
 # 1. Sa forme : 8 lignes, 8 colonnes
-print(image.shape)
+print("1. Forme du tenseur (lignes, colonnes) :", image.shape)
 
 # 2. Son nombre de valeurs
-print(image.numel())
+print("2. Nombre de valeurs (8 x 8) :", image.numel())
 
 # 3. Le type de ses valeurs : entiers sur 8 bits
-print(image.dtype)
+print("3. Type des valeurs (entiers de 0 à 255, sur 8 bits) :", image.dtype)
 
 # 4. Lire un pixel : ligne 2, colonne 4 (on compte à partir de 0)
-print(image[1, 3])
+print("4. Pixel ligne 2, colonne 4 (image[1, 3]) :", image[1, 3])
 
 # 5. Lire une ligne entière : la deuxième
-print(image[1])
+print("5. Deuxième ligne entière (image[1]) :", image[1])
 
 # 6. Calculer sur les 64 valeurs à la fois : l'image en négatif
 negatif = 255 - image
-print(negatif[1, 3])
-print(negatif[0, 0])
+print("6. En négatif (255 - valeur), le même pixel blanc devient presque noir :", negatif[1, 3])
+print("   et le coin noir en haut à gauche devient blanc :", negatif[0, 0])
 
 # 7. Ramener les valeurs entre 0 et 1
 image_norm = image / 255
-print(image_norm[1, 3])
-print(image_norm.dtype)
+print("7. Le même pixel ramené entre 0 et 1 (253 / 255) :", image_norm[1, 3])
+print("   Type des valeurs après la division (nombres à virgule) :", image_norm.dtype)

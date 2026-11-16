@@ -23,28 +23,30 @@ reseau = nn.Sequential(
     nn.ReLU(),
     nn.Linear(16, 10),
 )
+print("1. Le réseau, couche par couche :")
+print(reseau)
 
 # 2. Ses poids sont des tenseurs
-print(reseau[1].weight.shape)
-print(reseau[3].weight.shape)
-print(sum(p.numel() for p in reseau.parameters()))
+print("2. Poids de la couche 1 (16 neurones x 64 pixels) :", reseau[1].weight.shape)
+print("   Poids de la couche 2 (10 chiffres x 16 neurones) :", reseau[3].weight.shape)
+print("   Nombre total de paramètres (poids + biais) :", sum(p.numel() for p in reseau.parameters()))
 
 # 3. L'entrée : un lot d'une image, valeurs entre 0 et 1
 x = (image / 255).unsqueeze(0)
-print(x.shape)
+print("3. Forme de l'entrée (1 image, 8 lignes, 8 colonnes) :", x.shape)
 
 # 4. Le trajet du tenseur à travers le réseau
-print(reseau[0](x).shape)
-print(reseau[1](reseau[0](x)).shape)
+print("4. Après Flatten (64 pixels à la suite) :", reseau[0](x).shape)
+print("   Après la couche 1 (16 neurones) :", reseau[1](reseau[0](x)).shape)
 scores = reseau(x)
-print(scores.shape)
+print("   Sortie du réseau (un score par chiffre, de 0 à 9) :", scores.shape)
 
 # 5. Avant entraînement : des poids au hasard
 proba = scores.softmax(dim=1)
-print(proba.argmax(dim=1))
+print("5. Réponse avec des poids au hasard (chiffre le plus probable) :", proba.argmax(dim=1))
 
 # 6. Après entraînement (poids produits par entrainer.py)
 reseau.load_state_dict(torch.load(Path(__file__).with_name("reseau_entraine.pt")))
 proba = reseau(x).softmax(dim=1)
-print(proba.argmax(dim=1))
-print(round(proba[0, 7].item(), 3))
+print("6. Réponse après entraînement (chiffre le plus probable) :", proba.argmax(dim=1))
+print("   Probabilité que ce soit un 7 :", round(proba[0, 7].item(), 3))

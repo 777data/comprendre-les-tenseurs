@@ -8,7 +8,7 @@
 | 4 | [Comment un réseau de neurones utilise les tenseurs](episode-4-reseau-de-neurones/) | `reseau.py`, `entrainer.py` | Un réseau 64 → 16 → 10 : ses poids sont des tenseurs, il reconnaît le 7 une fois entraîné |
 | 5 | [Comment l'IA apprend à partir des données](episode-5-apprentissage/) | `apprentissage.py` | La perte, les gradients et la boucle d'entraînement, sur 1 437 vrais chiffres manuscrits |
 
-Chaque dossier contient le script et `resultats_attendus.txt`, la sortie exacte montrée dans la vidéo.
+Chaque dossier contient le script et `resultats_attendus.txt`, sa sortie complète. Chaque ligne affichée commence par une courte explication de ce qu'elle montre. Les valeurs sont exactement celles de la vidéo.
 
 ## Les résultats clés
 

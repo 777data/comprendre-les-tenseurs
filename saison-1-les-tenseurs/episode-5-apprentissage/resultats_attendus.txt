@@ -1,7 +1,7 @@
-2.348
-torch.Size([16, 64])
-torch.Size([10, 16])
-0.015
-tensor([7])
-0.957
-0.967
+1. Perte avant entraînement (erreur moyenne sur les 1 437 images) : 2.348
+2. Forme du gradient de la couche 1 (la même que ses poids) : torch.Size([16, 64])
+   Forme du gradient de la couche 2 (la même que ses poids) : torch.Size([10, 16])
+3. Perte après 400 passes d'entraînement : 0.015
+   Réponse du réseau pour notre 7 (chiffre le plus probable) : tensor([7])
+   Probabilité que ce soit un 7 : 0.957
+   Exactitude sur les 360 images jamais vues : 0.967

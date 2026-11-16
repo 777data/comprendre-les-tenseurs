@@ -14,30 +14,31 @@ image = torch.tensor([
 ], dtype=torch.uint8)
 
 # 1. Rang 0, 1, 2 : un pixel, une ligne, l'image
+#    ndim = le rang (nombre de dimensions), shape = la taille de chaque dimension
 pixel = image[1, 3]
 ligne = image[1]
-print(pixel.ndim, pixel.shape)
-print(ligne.ndim, ligne.shape)
-print(image.ndim, image.shape)
+print("1. Un pixel   -> rang, forme :", pixel.ndim, pixel.shape)
+print("   Une ligne  -> rang, forme :", ligne.ndim, ligne.shape)
+print("   L'image    -> rang, forme :", image.ndim, image.shape)
 
 # 2. Les axes
 #    axe 0 : on additionne en descendant les lignes  -> une somme par colonne
 #    axe 1 : on additionne en parcourant chaque ligne -> une somme par ligne
-print(image.sum(dim=0))
-print(image.sum(dim=1))
+print("2. Somme selon l'axe 0 (une somme par colonne) :", image.sum(dim=0))
+print("   Somme selon l'axe 1 (une somme par ligne)   :", image.sum(dim=1))
 
 # 3. Aplatir, puis remodeler
 liste = image.flatten()
-print(liste.shape)
+print("3. Forme après flatten (les 64 valeurs à la suite) :", liste.shape)
 grille = liste.reshape(8, 8)
-print(grille.shape)
-print(torch.equal(grille, image))
+print("   Forme après reshape(8, 8) (de nouveau une grille) :", grille.shape)
+print("   La grille est-elle identique à l'image de départ ?", torch.equal(grille, image))
 
 # 4. Rang 3 : un 7 rouge, en trois canaux (rouge, vert, bleu)
 noir = torch.zeros_like(image)
 rouge = torch.stack([image, noir, noir])
-print(rouge.ndim, rouge.shape)
+print("4. Image en couleurs (canaux, lignes, colonnes) -> rang, forme :", rouge.ndim, rouge.shape)
 
 # 5. Rang 4 : un lot d'images
 lot = rouge.unsqueeze(0)
-print(lot.ndim, lot.shape)
+print("5. Lot d'une image (images, canaux, lignes, colonnes) -> rang, forme :", lot.ndim, lot.shape)
