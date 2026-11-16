@@ -1,0 +1,9 @@
+torch.Size([8, 8])
+64
+torch.uint8
+tensor(253, dtype=torch.uint8)
+tensor([  0, 199, 250, 253, 253, 253, 188,   0], dtype=torch.uint8)
+tensor(2, dtype=torch.uint8)
+tensor(255, dtype=torch.uint8)
+tensor(0.9922)
+torch.float32

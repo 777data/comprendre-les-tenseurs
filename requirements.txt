@@ -1,0 +1,6 @@
+torch>=2.2
+# Sur Mac Intel, PyTorch s'arrête à la version 2.2, compilée pour numpy 1.x
+numpy<2 ; sys_platform == "darwin" and platform_machine == "x86_64"
+numpy ; sys_platform != "darwin" or platform_machine != "x86_64"
+scikit-learn
+pytest

@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store
+# produit par episode-5-apprentissage/apprentissage.py
+journal_entrainement.json

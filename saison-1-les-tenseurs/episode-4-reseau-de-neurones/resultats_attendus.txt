@@ -1,0 +1,10 @@
+torch.Size([16, 64])
+torch.Size([10, 16])
+1210
+torch.Size([1, 8, 8])
+torch.Size([1, 64])
+torch.Size([1, 16])
+torch.Size([1, 10])
+tensor([1])
+tensor([7])
+0.957
