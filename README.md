@@ -18,6 +18,8 @@ Le fil rouge de toute la série est un même chiffre 7 manuscrit, en 8 × 8 pixe
 
 Il faut Python 3.10 ou plus récent.
 
+> **Mac Intel** : PyTorch s'arrête à la version 2.2, qui n'existe que pour Python 3.12 au maximum. Si `pip` répond « No matching distribution found for torch », créez l'environnement avec Python 3.12 : `python3.12 -m venv .venv` (Python 3.12 s'installe par exemple avec `brew install python@3.12`).
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate        # Windows : .venv\Scripts\activate
